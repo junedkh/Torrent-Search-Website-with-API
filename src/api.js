@@ -14,7 +14,7 @@ const ettvCentral = require('../torrent/ettv');
 const app = express();
 const router = express.Router();
 
-router.get('/api/:website/:query/:page?', (req, res, next) => {
+router.get('/:website/:query/:page?', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let website = (req.params.website).toLowerCase();
@@ -222,13 +222,8 @@ router.get('/', (req, res) => {
     res.send('<h1>Welcome to 1337x, NyaaSi, YTS, PirateBay, Torlock, EzTvio , TorrentGalaxy , Rarbg and Ettv Central Unoffical API</h1>');
 });
 
-router.get("/test", (req, res) => {
-    res.json({
-      hello: "hi!"
-    });
-  });
 
-app.use(`/.netlify/functions/app`,router);
+app.use(`/.netlify/functions/api`,router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
