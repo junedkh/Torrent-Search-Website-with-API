@@ -4,9 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
     <title>Torrent Search API</title>
 </head>
 <body>
-    <h1>Welcome to 1337x, NyaaSi, YTS, PirateBay, Torlock, EzTvio , TorrentGalaxy , Rarbg and Ettv Central Unoffical API.</br>Use https://torrents-api.netlify.app/.netlify/functions/api/[API_NAME]/[SEARCH_QUERY] to use this torrent search api.</h1></br> <h4>Implemented on netlify by Bipul Dey.</h4>
+   <header>
+      <div class="brand">
+        <img
+          src="https://telegra.ph/file/6507910fd06d18dfaba82.jpg"
+          alt="logo"
+        />
+        <a href="#">
+          <h2 class="name">MirrorX</h2>
+        </a>
+      </div>
+      <div class="social">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </header>
+    <section>
+      <form>
+        <div>
+          <label>Torrent Searcher</label>
+          <input
+            type="text" id="search"
+            placeholder="Search query..."
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </section>
+    <div id="match-make_list">
+    <h3 class="heading">Search Results</h3>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
