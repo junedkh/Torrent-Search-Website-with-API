@@ -1,6 +1,4 @@
-'use strict';
 const express = require('express');
-const path = require('path');
 const scrap1337x = require('./torrent/1337x');
 const scrapNyaa = require('./torrent/nyaaSI');
 const scrapYts = require('./torrent/yts');
@@ -13,10 +11,6 @@ const rarbg = require('./torrent/rarbg');
 const ettvCentral = require('./torrent/ettv');
 
 const app = express();
-const serverless = require('serverless-http');
-const bodyParser = require('body-parser');
-
-const router = express.Router();
 
 app.use('/api/:website/:query/:page?', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -222,17 +216,9 @@ app.use('/api/:website/:query/:page?', (req, res, next) => {
 
 });
 
-router.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from Express.js!</h1>');
-  res.end();
+app.use('/', (req, res) => {
+    res.send('<h1>Welcome to 1337x, NyaaSi, YTS, PirateBay, Torlock, EzTvio , TorrentGalaxy , Rarbg and Ettv Central Unoffical API</h1>');
 });
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-router.post('/', (req, res) => res.json({ postBody: req.body }));
-
-app.use(bodyParser.json());
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-
-module.exports = app;
-module.exports.handler = serverless(app);
+const PORT = process.env.PORT || 3001;
+console.log('Listening on PORT : ', PORT);
+app.listen(PORT);
