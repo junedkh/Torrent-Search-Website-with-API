@@ -1,15 +1,15 @@
 const express = require('express');
 const serverless = require('serverless-http');
-const scrap1337x = require('./torrent/1337x');
-const scrapNyaa = require('./torrent/nyaaSI');
-const scrapYts = require('./torrent/yts');
-const scrapPirateBay = require('./torrent/pirateBay');
-const scrapTorLock = require('./torrent/torLock');
-const scrapEzTVio = require('./torrent/ezTV');
-const torrentGalaxy = require('./torrent/torrentGalaxy');
-const combo = require('./torrent/COMBO');
-const rarbg = require('./torrent/rarbg');
-const ettvCentral = require('./torrent/ettv');
+const scrap1337x = require('../torrent/1337x');
+const scrapNyaa = require('../torrent/nyaaSI');
+const scrapYts = require('../torrent/yts');
+const scrapPirateBay = require('../torrent/pirateBay');
+const scrapTorLock = require('../torrent/torLock');
+const scrapEzTVio = require('../torrent/ezTV');
+const torrentGalaxy = require('../torrent/torrentGalaxy');
+const combo = require('../torrent/COMBO');
+const rarbg = require('../torrent/rarbg');
+const ettvCentral = require('../torrent/ettv');
 
 const app = express();
 const router = express.Router();
@@ -222,6 +222,13 @@ router.get('/', (req, res) => {
     res.send('<h1>Welcome to 1337x, NyaaSi, YTS, PirateBay, Torlock, EzTvio , TorrentGalaxy , Rarbg and Ettv Central Unoffical API</h1>');
 });
 
-app.use('/.netlify/functions',router);
+router.get("/test", (req, res) => {
+    res.json({
+      hello: "hi!"
+    });
+  });
 
+app.use(`/.netlify/functions/app`,router);
+
+module.exports = app;
 module.exports.handler = serverless(app);
