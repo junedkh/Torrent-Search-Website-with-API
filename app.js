@@ -1,4 +1,5 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const scrap1337x = require('./torrent/1337x');
 const scrapNyaa = require('./torrent/nyaaSI');
 const scrapYts = require('./torrent/yts');
@@ -11,8 +12,9 @@ const rarbg = require('./torrent/rarbg');
 const ettvCentral = require('./torrent/ettv');
 
 const app = express();
+const router = express.Router();
 
-app.use('/api/:website/:query/:page?', (req, res, next) => {
+router.get('/api/:website/:query/:page?', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let website = (req.params.website).toLowerCase();
@@ -216,9 +218,10 @@ app.use('/api/:website/:query/:page?', (req, res, next) => {
 
 });
 
-app.use('/', (req, res) => {
+router.get('/', (req, res) => {
     res.send('<h1>Welcome to 1337x, NyaaSi, YTS, PirateBay, Torlock, EzTvio , TorrentGalaxy , Rarbg and Ettv Central Unoffical API</h1>');
 });
-const PORT = process.env.PORT || 3001;
-console.log('Listening on PORT : ', PORT);
-app.listen(PORT);
+
+app.use('/.netlify/functions',router);
+
+module.exports.handler = serverless(app);
