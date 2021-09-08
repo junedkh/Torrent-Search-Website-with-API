@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,10 +17,17 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Torrent Search API</title>
-</head>
-<body>
-   <header>
+  </head>
+  <body>
+    <header>
       <div class="brand">
         <img
           src="https://telegra.ph/file/6507910fd06d18dfaba82.jpg"
@@ -37,19 +44,32 @@
     </header>
     <section>
       <form>
-        <div>
-          <label>Torrent Searcher</label>
-          <input
-            type="text" id="search"
-            placeholder="Search query..."
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <fieldset>
+          <legend>Torrent Searcher</legend>
+          <input type="text" id="search" placeholder="Search query..." />
+          <select name="providers" id="providers">
+            <option value="1337x" selected>1337x</option>
+            <option value="nyaasi">Nyaasi</option>
+            <option value="yts">Yts</option>
+            <option value="Piratebay">Piratebay</option>
+            <option value="torlock">Torlock</option>
+            <option value="eztv">Eztv</option>
+            <option value="tgx">Torrent Galaxy</option>
+            <option value="rarbg">Rarbg</option>
+          </select>
+        </fieldset>
+        <button type="submit" id="button">
+          <span class="spinner"
+            >Searching <i class="fas fa-spin fa-spinner"></i></span
+          ><span class="searchText">Search</span>
+        </button>
       </form>
     </section>
-    <div id="match-make_list">
-    <h3 class="heading">Search Results</h3>
+    
+    <div id="SearchResultsBox">
+      <h3 class="heading">Search Results</h3>
+      <div id="searchResults" ></div>
     </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

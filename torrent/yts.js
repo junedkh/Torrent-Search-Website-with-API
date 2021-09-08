@@ -78,10 +78,7 @@ async function yts(query, page = '1') {
 
     return all;
 
-
-
 }
-
 
 module.exports = {
     yts: yts

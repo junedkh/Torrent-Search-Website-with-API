@@ -15,8 +15,10 @@ const app = express();
 const router = express.Router();
 
 router.get('/:website/:query/:page?', (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     let website = (req.params.website).toLowerCase();
     let query = req.params.query;
     let page = req.params.page;
@@ -180,7 +182,7 @@ router.get('/:website/:query/:page?', (req, res, next) => {
         }
 
     }
-    if (website === "ettv") {
+    if (website === "eztv") {
         ettvCentral(query, page)
             .then((data) => {
                 if (data === null) {
